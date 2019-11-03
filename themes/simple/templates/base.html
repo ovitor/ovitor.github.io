@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
+<head>
+        {% block head %}
+        <title>{% block title %}{{ SITENAME }} - {{ AUTHOR }} {{ SITESUBTITLE }}{% endblock title %}</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <link rel="stylesheet" href="//cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/simple.css">
+        <meta charset="utf-8" />
+        {% if FEED_ALL_ATOM %}
+        <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+        {% endif %}
+        {% if FEED_ALL_RSS %}
+        <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+        {% endif %}
+        {% if FEED_ATOM %}
+        <link href="{{ FEED_DOMAIN }}/{%if FEED_ATOM_URL %}{{ FEED_ATOM_URL }}{% else %}{{ FEED_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
+        {% endif %}
+        {% if FEED_RSS %}
+        <link href="{{ FEED_DOMAIN }}/{% if FEED_RSS_URL %}{{ FEED_RSS_URL }}{% else %}{{ FEED_RSS }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+        {% endif %}
+        {% if CATEGORY_FEED_ATOM and category %}
+        <link href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_ATOM_URL %}{{ CATEGORY_FEED_ATOM_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_ATOM.format(slug=category.slug) }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />
+        {% endif %}
+        {% if CATEGORY_FEED_RSS and category %}
+        <link href="{{ FEED_DOMAIN }}/{% if CATEGORY_FEED_RSS_URL %}{{ CATEGORY_FEED_RSS_URL.format(slug=category.slug) }}{% else %}{{ CATEGORY_FEED_RSS.format(slug=category.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />
+        {% endif %}
+        {% if TAG_FEED_ATOM and tag %}
+        <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_ATOM_URL %}{{ TAG_FEED_ATOM_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_ATOM.format(slug=tag.slug) }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />
+        {% endif %}
+        {% if TAG_FEED_RSS and tag %}
+        <link href="{{ FEED_DOMAIN }}/{% if TAG_FEED_RSS_URL %}{{ TAG_FEED_RSS_URL.format(slug=tag.slug) }}{% else %}{{ TAG_FEED_RSS.format(slug=tag.slug) }}{% endif %}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />
+        {% endif %}
+        {% endblock head %}
+</head>
+
+<body id="index" class="home">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+
+        <div class="column is-2">
+          <!-- menu hidden 
+          <nav id="menu" class="navbar">
+            <div class="navbar-menu">
+                {% for title, link in MENUITEMS %}
+                  <a class="navbar-item" href="{{ link }}">{{ title }}</a>
+                {% endfor %}
+
+                {% if DISPLAY_PAGES_ON_MENU %}
+                  {% for p in pages %}
+                    <a class="{% if p == page %}active{% endif %} navbar-item" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                  {% endfor %}
+                {% endif %}
+
+                {% if DISPLAY_CATEGORIES_ON_MENU %}
+                  {% for cat, null in categories %}
+                    <a class="{% if cat == category %}active{% endif %} navbar-item" href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+                  {% endfor %}
+                {% endif %}
+            </div> 
+          </nav>
+          menu hidden -->
+
+          <header id="banner" class="body">
+            <h1 class="title has-text-centered" style="margin-bottom:20px;">
+              <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
+              <br />
+              <small>{{ SITESUBTITLE }}</small>
+            </h1>
+          </header><!-- /#banner -->
+
+         <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <a class="button is-light is-medium" href="{{ GITHUB_URL }}" target="_blank" title="{{ SITENAME }} authors GitHub page">
+              <span class="icon is-medium">
+                <i class="mdi mdi-github-circle" aria-hidden="true"></i>
+              </span>
+            </a>
+          </p>
+
+          <p class="control">
+
+            <a class="button is-light is-medium" href="{{ FEED_ALL_ATOM_URL }}" title="{{ SITENAME }} Full Atom Feed">
+              <span class="icon">
+                <i class="mdi mdi-rss" aria-hidden="true"></i>
+              </span>
+            </a>
+          </p>
+        </div> 
+
+        </div> <!-- column -->
+
+        <div class="column is-three-quarters">
+          {% block content %}
+          {% endblock %}
+        </div> <!-- column -->
+
+
+      </div> <!-- columns -->
+    </div> <!-- container -->
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <footer id="contentinfo" class="has-text-centered">
+        <address id="about" class="vcard body">
+          made with <span class="icon has-text-danger"> <i class="mdi mdi-code-tags"></i></span> 
+          using <a href="http://getpelican.com/">pelican</a>,
+          which takes great advantage of <span class="icon"> <i class="mdi mdi-language-python"></i></span>
+        </address><!-- /#about -->
+      </footer><!-- /#contentinfo -->
+    </div> <!-- container -->
+  </section> <!--section footer -->
+</body>
+</html>

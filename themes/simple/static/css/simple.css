@@ -1,0 +1,39 @@
+html {
+  /*background-color: #eef5db;*/
+  background-color: #f4f4f2;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Merriweather', serif;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+a {
+  color: #4f6367;
+}
+
+.box {
+  /*background-color: #eef5db;*/
+  background-color: #f4f4f2;
+}
+
+.is-sunset {
+  color: #fe5f55;
+}
+
+.title {
+  font-family: 'Merriweather', serif;
+}
+
+.highlight pre, .highlighttable pre {
+  background: #4f6367;
+  color: #f8f8f2;
+}
