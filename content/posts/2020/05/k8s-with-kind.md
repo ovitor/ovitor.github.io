@@ -1,5 +1,5 @@
 Title: kubernetes with kind 
-Date: 2020-05-09 10:00
+Date: 2020-05-08 17:30
 Category: system administration 
 Tags: kubernetes, docker 
 Author: Vitor Carvalho 
