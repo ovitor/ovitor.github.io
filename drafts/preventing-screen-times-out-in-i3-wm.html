@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>blog - preventing screen times out in i3 wm</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <link rel="stylesheet" href="//cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://ovitor.github.io/theme/css/simple.css">
+        <meta charset="utf-8" />
+        <link href="https://ovitor.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="blog Full Atom Feed" />
+        <link href="https://ovitor.github.io/feeds/system-administration.atom.xml" type="application/atom+xml" rel="alternate" title="blog Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="linux" />
+    <meta name="tags" content="xorg" />
+
+</head>
+
+<body id="index" class="home">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+
+        <div class="column is-2">
+          <!-- menu hidden 
+          <nav id="menu" class="navbar">
+            <div class="navbar-menu">
+
+
+                    <a class=" navbar-item" href="https://ovitor.github.io/category/development.html">development</a>
+                    <a class="active navbar-item" href="https://ovitor.github.io/category/system-administration.html">system administration</a>
+            </div> 
+          </nav>
+          menu hidden -->
+
+          <header id="banner" class="body">
+            <h1 class="title has-text-centered" style="margin-bottom:20px;">
+              <a href="https://ovitor.github.io/">blog</a>
+              <br />
+              <small></small>
+            </h1>
+          </header><!-- /#banner -->
+
+         <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <a class="button is-light is-medium" href="https://github.com/ovitor" target="_blank" title="blog authors GitHub page">
+              <span class="icon is-medium">
+                <i class="mdi mdi-github-circle" aria-hidden="true"></i>
+              </span>
+            </a>
+          </p>
+        </div> 
+
+        </div> <!-- column -->
+
+        <div class="column is-three-quarters">
+  <div class="box is-shadowless is-paddingless">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <h1 class="title">
+            <a href="https://ovitor.github.io/drafts/preventing-screen-times-out-in-i3-wm.html" 
+               rel="bookmark" 
+               title="Permalink to preventing screen times out in i3 wm">
+               preventing screen times out in i3 wm
+            </a>
+          </h1>
+          
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <span class="level-item" aria-label="created_at">
+                <span class="icon">
+                  <i class="mdi mdi-calendar" aria-hidden="true"></i>
+                </span>
+                <time class="published" datetime="2019-11-30T11:00:00-03:00"> Sat 30 November 2019 </time>
+              </span>
+              <span class="level-item" aria-label="retweet">
+                <span class="icon">
+                  <i class="mdi mdi-account-outline" aria-hidden="true"></i>
+                </span>
+                <address class="vcard author">
+                    <a class="url fn" href="https://ovitor.github.io/author/vitor-carvalho.html">Vitor Carvalho</a>
+                    .
+                </address>
+              </span>
+            </div>
+          </nav>
+          <div class="post-content">
+            <p>I'm currently using Linux with i3 Window Manager and an external monitor
+plugged into a thinkpad dock station.  Sometimes I get afk for too long and the
+screen goes black and I'm unable to turn it on again, only if I deattach the
+notebook and attach it back. I don't know why this happens.</p>
+<p>So I decided to look for a way that the monitor doesn't turns black in such
+situations. The first thing I found out is that Xorg has a small screen saver
+functionality builtin. It allows the system to goes into standby or suspend
+mode.</p>
+<p>Searching the web I found this <a href="https://askubuntu.com/questions/763994/screen-times-out-in-i3-wm">link</a> 
+from Ask Ubuntu, the answer teaches how you can disable this Xorg funcionallity
+completely.</p>
+<p>All you have to do it's to use the xset tool.</p>
+<div class="highlight"><pre><span></span><code><span class="err">xset -dpms</span>
+<span class="err">xset s off</span>
+</code></pre></div>
+
+
+<p>The <code>-dpms</code> option disable DPMS (Energy Star) features, on the other hand, the
+option <code>+dpms</code> enable it (from xset man page).
+The <code>s</code> option allows you to set screen saver parameters, in this case, we are
+turn the screen saver off.</p>
+<p>Now my external monitor never get black screen. I always execute this 2 lines
+of code when I put the notebook in my dock station.</p>
+          </div>
+          <div class="post-info-footer">
+            <hr />
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <span class="level-item" aria-label="created_at">
+                  <div class="category">
+                    <a href="#" onclick="event.preventDefault();history.go(-1);">
+                      <span class="icon">
+                        <i class="mdi mdi-chevron-left" aria-hidden="true"></i>
+                      </span>
+                      back
+                    </a> 
+                  </div>
+                </span>
+
+                <span class="level-item" aria-label="created_at">
+                  <div class="category">
+                    post under category:
+                    <a href="https://ovitor.github.io/category/system-administration.html">system administration</a>
+                  </div>
+                </span>
+
+                <span class="level-item" aria-label="updated_at">
+                  <span class="icon">
+                    <i class="mdi mdi-tag-outline" aria-hidden="true"></i>
+                  </span>
+                    <a class="url fn" href="https://ovitor.github.io/tag/linux.html">linux</a>
+                    ,
+                    <a class="url fn" href="https://ovitor.github.io/tag/xorg.html">xorg</a>
+                    .
+                </span>
+              </div>
+            </nav>
+          </div>
+      </div> <!-- content -->
+      </article>
+    </div>
+
+        </div> <!-- column -->
+
+
+      </div> <!-- columns -->
+    </div> <!-- container -->
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <footer id="contentinfo" class="has-text-centered">
+        <address id="about" class="vcard body">
+          made with <span class="icon has-text-danger"> <i class="mdi mdi-code-tags"></i></span> 
+          using <a href="http://getpelican.com/">pelican</a>,
+          which takes great advantage of <span class="icon"> <i class="mdi mdi-language-python"></i></span>
+        </address><!-- /#about -->
+      </footer><!-- /#contentinfo -->
+    </div> <!-- container -->
+  </section> <!--section footer -->
+</body>
+</html>

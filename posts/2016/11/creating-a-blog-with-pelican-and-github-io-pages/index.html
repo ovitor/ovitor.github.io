@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>blog - creating a blog with pelican and github io pages</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <link rel="stylesheet" href="//cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://ovitor.github.io/theme/css/simple.css">
+        <meta charset="utf-8" />
+        <link href="https://ovitor.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="blog Full Atom Feed" />
+        <link href="https://ovitor.github.io/feeds/development.atom.xml" type="application/atom+xml" rel="alternate" title="blog Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="blog" />
+    <meta name="tags" content="pelican" />
+    <meta name="tags" content="python" />
+    <meta name="tags" content="github" />
+
+</head>
+
+<body id="index" class="home">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+
+        <div class="column is-2">
+          <!-- menu hidden 
+          <nav id="menu" class="navbar">
+            <div class="navbar-menu">
+
+
+                    <a class="active navbar-item" href="https://ovitor.github.io/category/development.html">development</a>
+                    <a class=" navbar-item" href="https://ovitor.github.io/category/system-administration.html">system administration</a>
+            </div> 
+          </nav>
+          menu hidden -->
+
+          <header id="banner" class="body">
+            <h1 class="title has-text-centered" style="margin-bottom:20px;">
+              <a href="https://ovitor.github.io/">blog</a>
+              <br />
+              <small></small>
+            </h1>
+          </header><!-- /#banner -->
+
+         <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <a class="button is-light is-medium" href="https://github.com/ovitor" target="_blank" title="blog authors GitHub page">
+              <span class="icon is-medium">
+                <i class="mdi mdi-github-circle" aria-hidden="true"></i>
+              </span>
+            </a>
+          </p>
+        </div> 
+
+        </div> <!-- column -->
+
+        <div class="column is-three-quarters">
+  <div class="box is-shadowless is-paddingless">
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <h1 class="title">
+            <a href="https://ovitor.github.io/posts/2016/11/creating-a-blog-with-pelican-and-github-io-pages/" 
+               rel="bookmark" 
+               title="Permalink to creating a blog with pelican and github io pages">
+               creating a blog with pelican and github io pages
+            </a>
+          </h1>
+          
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <span class="level-item" aria-label="created_at">
+                <span class="icon">
+                  <i class="mdi mdi-calendar" aria-hidden="true"></i>
+                </span>
+                <time class="published" datetime="2016-11-24T18:52:00-03:00"> Thu 24 November 2016 </time>
+              </span>
+                <span class="level-item" aria-label="updated_at">
+                  <span class="icon">
+                    <i class="mdi mdi-calendar-edit" aria-hidden="true"></i>
+                  </span>
+                  <time class="modified" datetime="2019-11-02T19:30:00-03:00"> Sat 02 November 2019</time>
+                </span>
+              <span class="level-item" aria-label="retweet">
+                <span class="icon">
+                  <i class="mdi mdi-account-outline" aria-hidden="true"></i>
+                </span>
+                <address class="vcard author">
+                    <a class="url fn" href="https://ovitor.github.io/author/vitor-carvalho.html">Vitor Carvalho</a>
+                    .
+                </address>
+              </span>
+            </div>
+          </nav>
+          <div class="post-content">
+            <p>So I decided to create a blog and write about my learning process in a feel areas.
+My first post will be how I end up with a blog with <a href="http://getpelican.com/" target="_blank">Pelican</a>
+- a static site generator - that was written in Python language.</p>
+<p>My skills in development are mainly in Python, so I look up for a tool that help me
+to maintain a blog and the search ends with this Pelican tool. I started to read the 
+manual (RTFM!) and to begin you will need Python version 2.7.x or 3.3+. Here I'm using poetry
+to help me keep my environment clean.</p>
+<div class="highlight"><pre><span></span><code>$ mkdir ~/blog <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/blog
+$ poetry init <span class="c1"># you will have to answer some questions choose no when asked to define dependencies</span>
+$ poetry shell
+$ poetry add pelican Markdown 
+$ pelican-quickstart 
+</code></pre></div>
+
+
+<p>You will have to answer several questions about your blog after the <code>pelican-quickstart</code>
+command. Answer <strong>Yes</strong> when asked to upload your blog using GitHub Pages.
+Then, you can run the development server delivered with Pelican. </p>
+<div class="highlight"><pre><span></span><code>$ pelican -rl 
+</code></pre></div>
+
+
+<p>Done! Now you have a blog to work with. Your articles and posts will be saved in
+<code>content</code> directory. You can create a file:</p>
+<div class="highlight"><pre><span></span><code>$ touch content/simple-article.md
+</code></pre></div>
+
+
+<p>Let's see a content sample blog post <code>simple-article.md</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span> <span class="n">Nice</span> <span class="n">simple</span> <span class="n">article</span> <span class="n">title</span> 
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="o">:</span><span class="mi">00</span>
+
+<span class="n">Write</span> <span class="n">some</span> <span class="n">important</span> <span class="n">content</span> <span class="n">here</span><span class="o">.</span> 
+</code></pre></div>
+
+
+<p>Since you have ran the development server (with auto-reload option enabled), the file will be 
+automatically refreshed and you can access <a href="http://localhost:8000" target="_blank">localhost:8000</a>. 
+Very nice.</p>
+<h3>Publishing your site</h3>
+<p>Now let's publish this blog within <a href="https://pages.github.com/" target="_blank">Github Pages</a>.
+Create a new repository named <code>username.github.io</code> and run the following commands:</p>
+<div class="highlight"><pre><span></span><code>$ poetry add ghp-import
+$ git init
+$ git remote add origin &lt;url-repository&gt;
+$ git checkout -b blog 
+$ <span class="nb">echo</span> <span class="s1">&#39;output&#39;</span> &gt;&gt; .gitignore
+$ git add .
+$ git commit -m <span class="s2">&quot;first commit&quot;</span>
+$ git push origin blog
+</code></pre></div>
+
+
+<p>Now we have all the blog structure at github. Let's use <code>ghp-import</code> to publish the blog.</p>
+<div class="highlight"><pre><span></span><code>make github
+</code></pre></div>
+
+
+<p>Your blog is accessible by the link username.github.io. That is it.</p>
+<p>Things you can do by yourself</p>
+<ul>
+<li>Change the default theme, using one of the listed in 
+<a href="http://www.pelicanthemes.com/" target="_blank">Pelican Themes</a>.</li>
+<li>Edit the selected theme to your needs.</li>
+<li>Add some plugins to your blog. Read 
+<a href="https://github.com/getpelican/pelican-plugins" target="_blank">Pelican Plugins</a>.</li>
+</ul>
+          </div>
+          <div class="post-info-footer">
+            <hr />
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <span class="level-item" aria-label="created_at">
+                  <div class="category">
+                    <a href="#" onclick="event.preventDefault();history.go(-1);">
+                      <span class="icon">
+                        <i class="mdi mdi-chevron-left" aria-hidden="true"></i>
+                      </span>
+                      back
+                    </a> 
+                  </div>
+                </span>
+
+                <span class="level-item" aria-label="created_at">
+                  <div class="category">
+                    post under category:
+                    <a href="https://ovitor.github.io/category/development.html">development</a>
+                  </div>
+                </span>
+
+                <span class="level-item" aria-label="updated_at">
+                  <span class="icon">
+                    <i class="mdi mdi-tag-outline" aria-hidden="true"></i>
+                  </span>
+                    <a class="url fn" href="https://ovitor.github.io/tag/blog.html">blog</a>
+                    ,
+                    <a class="url fn" href="https://ovitor.github.io/tag/pelican.html">pelican</a>
+                    ,
+                    <a class="url fn" href="https://ovitor.github.io/tag/python.html">python</a>
+                    ,
+                    <a class="url fn" href="https://ovitor.github.io/tag/github.html">github</a>
+                    .
+                </span>
+              </div>
+            </nav>
+          </div>
+      </div> <!-- content -->
+      </article>
+    </div>
+
+        </div> <!-- column -->
+
+
+      </div> <!-- columns -->
+    </div> <!-- container -->
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <footer id="contentinfo" class="has-text-centered">
+        <address id="about" class="vcard body">
+          made with <span class="icon has-text-danger"> <i class="mdi mdi-code-tags"></i></span> 
+          using <a href="http://getpelican.com/">pelican</a>,
+          which takes great advantage of <span class="icon"> <i class="mdi mdi-language-python"></i></span>
+        </address><!-- /#about -->
+      </footer><!-- /#contentinfo -->
+    </div> <!-- container -->
+  </section> <!--section footer -->
+</body>
+</html>

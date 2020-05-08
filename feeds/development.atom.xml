@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>blog - development</title><link href="https://ovitor.github.io/" rel="alternate"></link><link href="https://ovitor.github.io/feeds/development.atom.xml" rel="self"></link><id>https://ovitor.github.io/</id><updated>2019-11-02T19:30:00-03:00</updated><subtitle></subtitle><entry><title>creating a blog with pelican and github io pages</title><link href="https://ovitor.github.io/posts/2016/11/creating-a-blog-with-pelican-and-github-io-pages/" rel="alternate"></link><published>2016-11-24T18:52:00-03:00</published><updated>2019-11-02T19:30:00-03:00</updated><author><name>Vitor Carvalho</name></author><id>tag:ovitor.github.io,2016-11-24:/posts/2016/11/creating-a-blog-with-pelican-and-github-io-pages/</id><summary type="html">&lt;p&gt;So I decided to create a blog and write about my learning process in a feel areas.  My first post will be how I end up with a blog with &lt;a href="http://getpelican.com/" target="_blank"&gt;Pelican&lt;/a&gt; - a static site generator - that was written in Python language.&lt;/p&gt;</summary><content type="html">&lt;p&gt;So I decided to create a blog and write about my learning process in a feel areas.
+My first post will be how I end up with a blog with &lt;a href="http://getpelican.com/" target="_blank"&gt;Pelican&lt;/a&gt;
+- a static site generator - that was written in Python language.&lt;/p&gt;
+&lt;p&gt;My skills in development are mainly in Python, so I look up for a tool that help me
+to maintain a blog and the search ends with this Pelican tool. I started to read the 
+manual (RTFM!) and to begin you will need Python version 2.7.x or 3.3+. Here I'm using poetry
+to help me keep my environment clean.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir ~/blog &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; ~/blog
+$ poetry init &lt;span class="c1"&gt;# you will have to answer some questions choose no when asked to define dependencies&lt;/span&gt;
+$ poetry shell
+$ poetry add pelican Markdown 
+$ pelican-quickstart 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You will have to answer several questions about your blog after the &lt;code&gt;pelican-quickstart&lt;/code&gt;
+command. Answer &lt;strong&gt;Yes&lt;/strong&gt; when asked to upload your blog using GitHub Pages.
+Then, you can run the development server delivered with Pelican. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ pelican -rl 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Done! Now you have a blog to work with. Your articles and posts will be saved in
+&lt;code&gt;content&lt;/code&gt; directory. You can create a file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ touch content/simple-article.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's see a content sample blog post &lt;code&gt;simple-article.md&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Nice&lt;/span&gt; &lt;span class="n"&gt;simple&lt;/span&gt; &lt;span class="n"&gt;article&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt; 
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;24&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;
+
+&lt;span class="n"&gt;Write&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;important&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Since you have ran the development server (with auto-reload option enabled), the file will be 
+automatically refreshed and you can access &lt;a href="http://localhost:8000" target="_blank"&gt;localhost:8000&lt;/a&gt;. 
+Very nice.&lt;/p&gt;
+&lt;h3&gt;Publishing your site&lt;/h3&gt;
+&lt;p&gt;Now let's publish this blog within &lt;a href="https://pages.github.com/" target="_blank"&gt;Github Pages&lt;/a&gt;.
+Create a new repository named &lt;code&gt;username.github.io&lt;/code&gt; and run the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ poetry add ghp-import
+$ git init
+$ git remote add origin &amp;lt;url-repository&amp;gt;
+$ git checkout -b blog 
+$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;output&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; .gitignore
+$ git add .
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;first commit&amp;quot;&lt;/span&gt;
+$ git push origin blog
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now we have all the blog structure at github. Let's use &lt;code&gt;ghp-import&lt;/code&gt; to publish the blog.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;make github
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Your blog is accessible by the link username.github.io. That is it.&lt;/p&gt;
+&lt;p&gt;Things you can do by yourself&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Change the default theme, using one of the listed in 
+&lt;a href="http://www.pelicanthemes.com/" target="_blank"&gt;Pelican Themes&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Edit the selected theme to your needs.&lt;/li&gt;
+&lt;li&gt;Add some plugins to your blog. Read 
+&lt;a href="https://github.com/getpelican/pelican-plugins" target="_blank"&gt;Pelican Plugins&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="development"></category><category term="blog"></category><category term="pelican"></category><category term="python"></category><category term="github"></category></entry></feed>
