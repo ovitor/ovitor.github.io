@@ -4,6 +4,7 @@ Category: system administration
 Tags: linux, xorg 
 Author: Vitor Carvalho 
 Slug: preventing-screen-times-out-in-i3-wm 
+Status: draft
 Summary: I'm currently using Linux with i3 Window manager with an external monitor with a thinkpad dock station.  Sometimes I get afk for too long and the screen goes black and I'm unable to turn it on again, and I don't know why.
 
 
