@@ -24,7 +24,7 @@ AUTHOR_FEED_RSS = None
 # Blogroll
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{slug}/'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{slug}/index.html'
-GITHUB_URL = 'https://github.com/vcml10'
+GITHUB_URL = 'https://github.com/ovitor'
 LINKS = (('Pelican', 'http://getpelican.com/'))
 
 # Social widget

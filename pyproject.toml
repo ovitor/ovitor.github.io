@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "vcml10.github.io"
+name = "ovitor.github.io"
 version = "0.1.0"
 description = "Simple personal blog"
-authors = ["Vitor Carvalho <vitorcarvalhoml@gmail.com>"]
+authors = ["Vitor Carvalho <vcml@pm.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
