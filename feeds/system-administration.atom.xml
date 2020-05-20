@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>blog - system administration</title><link href="https://ovitor.github.io/" rel="alternate"></link><link href="https://ovitor.github.io/feeds/system-administration.atom.xml" rel="self"></link><id>https://ovitor.github.io/</id><updated>2020-05-08T17:30:00-03:00</updated><subtitle></subtitle><entry><title>kubernetes with kind</title><link href="https://ovitor.github.io/posts/2020/05/kubernetes-with-kind/" rel="alternate"></link><published>2020-05-08T17:30:00-03:00</published><updated>2020-05-08T17:30:00-03:00</updated><author><name>Vitor Carvalho</name></author><id>tag:ovitor.github.io,2020-05-08:/posts/2020/05/kubernetes-with-kind/</id><summary type="html">&lt;p&gt;Kubernetes, at first sight may look overhelming, but, trust me, it should help you get the things done very quickly once you are used to it.&lt;/p&gt;</summary><content type="html">&lt;p&gt;To those who doesn't know Kubernetes yet, it helps operational and developers
+<feed xmlns="http://www.w3.org/2005/Atom"><title>blog - system administration</title><link href="https://ovitor.github.io/" rel="alternate"></link><link href="https://ovitor.github.io/feeds/system-administration.atom.xml" rel="self"></link><id>https://ovitor.github.io/</id><updated>2020-05-08T17:30:00-03:00</updated><subtitle></subtitle><entry><title>kubernetes with kind</title><link href="https://ovitor.github.io/posts/2020/05/kubernetes-with-kind/" rel="alternate"></link><published>2020-05-08T17:30:00-03:00</published><updated>2020-05-08T17:30:00-03:00</updated><author><name>Vitor Carvalho</name></author><id>tag:ovitor.github.io,2020-05-08:/posts/2020/05/kubernetes-with-kind/</id><summary type="html">&lt;p&gt;Kubernetes, at first sight may look overwhelming, but, trust me, it should help you get the things done very quickly once you are used to it.&lt;/p&gt;</summary><content type="html">&lt;p&gt;To those who doesn't know Kubernetes yet, it helps operational and developers
 teams to keep every thing related to containerized applications up to date and
-running smootly in your infrastructure with minimal manually intervention. &lt;/p&gt;
-&lt;p&gt;Kubernetes, at first sight may look overhelming, but, trust me, it should 
+running smoothly in your infrastructure with minimal manually intervention.&lt;/p&gt;
+&lt;p&gt;Kubernetes, at first sight may look overwhelming, but, trust me, it should
 help you get the things done very quickly once you are used to it.&lt;/p&gt;
 &lt;p&gt;To start, you could look at several places at Internet. Look at this list:&lt;/p&gt;
 &lt;ul&gt;
@@ -10,12 +10,12 @@ help you get the things done very quickly once you are used to it.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://github.com/kelseyhightower/kubernetes-the-hard-way"&gt;Kubernetes the hard way&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.amazon.com/Kubernetes-Running-Dive-Future-Infrastructure-ebook/dp/B07YP1XSZ9/ref=pd_sbsd_14_1/137-9475426-0694937?_encoding=UTF8&amp;amp;pd_rd_i=B07YP1XSZ9&amp;amp;pd_rd_r=e067f55a-8432-4ec2-a567-5716a7f33e06&amp;amp;pd_rd_w=LnVM9&amp;amp;pd_rd_wg=W7D5v&amp;amp;pf_rd_p=2c2d0d3b-b3c5-4110-93fa-2c1270309ac1&amp;amp;pf_rd_r=AH49WE30Y4BM0PXJTWQP&amp;amp;psc=1&amp;amp;refRID=AH49WE30Y4BM0PXJTWQP"&gt;Kubernetes Up and Running - Dive into the future of infrastructure&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;I start with the oficial documentation and was a great starting point, then I pass to
+&lt;p&gt;I start with the official documentation and was a great starting point, then I pass to
 kubernetes the hard way and finally this awesome book listed above.&lt;/p&gt;
-&lt;p&gt;Almost every tutorial or even the official documentation prupose the use of
+&lt;p&gt;Almost every tutorial or even the official documentation propose the use of
 &lt;a href="https://kubernetes.io/docs/tasks/tools/install-minikube/"&gt;minikube&lt;/a&gt;, a tool
 that creates a VM (using some hypervisor as VirtualBox) and install
-kubernetes in it. It is a simple way, but too havy in my opnion. &lt;/p&gt;
+kubernetes in it. It is a simple way, but too heavy in my opinion.&lt;/p&gt;
 &lt;p&gt;The way I like to study was using &lt;code&gt;kind&lt;/code&gt; or &lt;a href="https://kind.sigs.k8s.io/"&gt;kubernetes in
 docker&lt;/a&gt;.  Who use Archlinux could install it from
 AUR. At the official page, you can find instructions to install in macOS/Linux
@@ -44,12 +44,12 @@ create a yaml file to hold the configs.&lt;/p&gt;
 
 
 &lt;p&gt;The file tells the kind that we want a object of the kind Cluster and we want
-to use the apiVersion v1alpha4. We also specify the number of nodes that we 
+to use the apiVersion v1alpha4. We also specify the number of nodes that we
 want to setup in our cluster. We could also specify a image to each one of the
 nodes.&lt;/p&gt;
 &lt;p&gt;After this, kind will download the base images from its docker hub and run the
-images in your local environment. Check if the cluster is up by getting the 
-nodes availables with &lt;code&gt;kind get nodes&lt;/code&gt;. You must see a list of nodes created
+images in your local environment. Check if the cluster is up by getting the
+nodes available with &lt;code&gt;kind get nodes&lt;/code&gt;. You must see a list of nodes created
 by the kind create command.&lt;/p&gt;
 &lt;p&gt;Another important command it is the &lt;code&gt;kind get kubeconfig&lt;/code&gt;, it outputs in the
 current terminal the kubeconfig file, necessary to use the &lt;code&gt;kubectl&lt;/code&gt; tool.&lt;/p&gt;

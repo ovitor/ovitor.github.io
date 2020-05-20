@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-          <title>blog - kubernetes with kind</title>
+          <title>blog - first pods, deployments and services</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
         <link rel="stylesheet" href="//cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lato|Merriweather&display=swap" rel="stylesheet">
@@ -61,10 +61,10 @@
       <div class="media-content">
         <div class="content">
           <h1 class="title">
-            <a href="https://ovitor.github.io/posts/2020/05/kubernetes-with-kind/" 
+            <a href="https://ovitor.github.io/drafts/first-pods-deployments-and-services.html" 
                rel="bookmark" 
-               title="Permalink to kubernetes with kind">
-               kubernetes with kind
+               title="Permalink to first pods, deployments and services">
+               first pods, deployments and services
             </a>
           </h1>
           
@@ -74,7 +74,7 @@
                 <span class="icon">
                   <i class="mdi mdi-calendar" aria-hidden="true"></i>
                 </span>
-                <time class="published" datetime="2020-05-08T17:30:00-03:00"> Fri 08 May 2020 </time>
+                <time class="published" datetime="2020-05-28T10:00:00-03:00"> Thu 28 May 2020 </time>
               </span>
               <span class="level-item" aria-label="retweet">
                 <span class="icon">
@@ -88,67 +88,23 @@
             </div>
           </nav>
           <div class="post-content">
-            <p>To those who doesn't know Kubernetes yet, it helps operational and developers
-teams to keep every thing related to containerized applications up to date and
-running smoothly in your infrastructure with minimal manually intervention.</p>
-<p>Kubernetes, at first sight may look overwhelming, but, trust me, it should
-help you get the things done very quickly once you are used to it.</p>
-<p>To start, you could look at several places at Internet. Look at this list:</p>
-<ul>
-<li><a href="https://kubernetes.io/docs/home/">Kubernetes docs</a></li>
-<li><a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">Kubernetes the hard way</a></li>
-<li><a href="https://www.amazon.com/Kubernetes-Running-Dive-Future-Infrastructure-ebook/dp/B07YP1XSZ9/ref=pd_sbsd_14_1/137-9475426-0694937?_encoding=UTF8&amp;pd_rd_i=B07YP1XSZ9&amp;pd_rd_r=e067f55a-8432-4ec2-a567-5716a7f33e06&amp;pd_rd_w=LnVM9&amp;pd_rd_wg=W7D5v&amp;pf_rd_p=2c2d0d3b-b3c5-4110-93fa-2c1270309ac1&amp;pf_rd_r=AH49WE30Y4BM0PXJTWQP&amp;psc=1&amp;refRID=AH49WE30Y4BM0PXJTWQP">Kubernetes Up and Running - Dive into the future of infrastructure</a></li>
-</ul>
-<p>I start with the official documentation and was a great starting point, then I pass to
-kubernetes the hard way and finally this awesome book listed above.</p>
-<p>Almost every tutorial or even the official documentation propose the use of
-<a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">minikube</a>, a tool
-that creates a VM (using some hypervisor as VirtualBox) and install
-kubernetes in it. It is a simple way, but too heavy in my opinion.</p>
-<p>The way I like to study was using <code>kind</code> or <a href="https://kind.sigs.k8s.io/">kubernetes in
-docker</a>.  Who use Archlinux could install it from
-AUR. At the official page, you can find instructions to install in macOS/Linux
-or Windows. You must have installed in your system other tools like Docker and
-kubectl (the last one isn't a dependency for kind, but you must have it to
-manage the cluster created by <em>kind</em>).</p>
-<h2>Starting using kind</h2>
-<p>After the installation you can starting creating your kubernetes cluster.
-First, create a file into your $HOME named <code>kind-config.yaml</code> that holds the
-kind configuration. Like every thing in the kubernetes environment, you can
-create a yaml file to hold the configs.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># four nodes (three workers) cluster config</span>
-<span class="n">kind:</span> <span class="n">Cluster</span>
-<span class="n">apiVersion:</span> <span class="n">kind</span>.<span class="o">x-</span><span class="n">k8s</span>.<span class="n">io</span><span class="o">/</span><span class="n">v1alpha4</span>
-<span class="n">nodes:</span>
-  - <span class="n">role:</span> <span class="n">control-plane</span>
-  - <span class="n">role:</span> <span class="n">worker</span>
-  - <span class="n">role:</span> <span class="n">worker</span>
-  - <span class="n">role:</span> <span class="n">worker</span>
+            <p>I suppose that you already have the <code>kubectl</code> tool, if you don't have it,
+install following the official documentation <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">here</a>.
+If you use Archlinux like I do, install it with <code>pacman -S kubectl</code>.</p>
+<p>So, the kubectl or kube control, allows you to manage your kubernetes cluster
+by run commands against it. The very first command that we gonna do it's to get
+the current version.</p>
+<div class="highlight"><pre><span></span><code>$ kubectl version
 </code></pre></div>
 
 
-<p>Then, run the following command</p>
-<div class="highlight"><pre><span></span><code>$ kind create cluster --config kind-config.yaml
-</code></pre></div>
-
-
-<p>The file tells the kind that we want a object of the kind Cluster and we want
-to use the apiVersion v1alpha4. We also specify the number of nodes that we
-want to setup in our cluster. We could also specify a image to each one of the
-nodes.</p>
-<p>After this, kind will download the base images from its docker hub and run the
-images in your local environment. Check if the cluster is up by getting the
-nodes available with <code>kind get nodes</code>. You must see a list of nodes created
-by the kind create command.</p>
-<p>Another important command it is the <code>kind get kubeconfig</code>, it outputs in the
-current terminal the kubeconfig file, necessary to use the <code>kubectl</code> tool.</p>
-<div class="highlight"><pre><span></span><code>$ kind get kubeconfig &gt; ~/.kube/config
-</code></pre></div>
-
-
-<h3>Next steps..</h3>
-<p>The next step we gonna see is how to interact with the new cluster. We must use
-the <code>kubectl</code> tool. This is a content to another post. </p>
+<p>If all went well, the output should be the version of the client and server
+(the kubernetes cluster), if you only see the client output, go back to my
+previous post where I walk you trough the process of get a functional
+kubernetes cluster with kind. </p>
+<p>Kubernetes are composed by several components every cluster has at least
+one </p>
+<p>The next command that we gonna see is the <code>config</code> command.</p>
           </div>
           <div class="post-info-footer">
             <hr />
