@@ -1,13 +1,15 @@
 [tool.poetry]
-name = "vcml10.github.io"
+name = "ovitor.github.io"
 version = "0.1.0"
 description = "Simple personal blog"
-authors = ["Vitor Carvalho <vitorcarvalhoml@gmail.com>"]
+authors = ["Vitor Carvalho <vcml@pm.me>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
 pelican = "^4.2"
 markdown = "^3.1"
+pylint = "^2.4.4"
+ghp-import = "^0.5.5"
 
 [tool.poetry.dev-dependencies]
 

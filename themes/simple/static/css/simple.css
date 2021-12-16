@@ -16,10 +16,17 @@ p {
   line-height: 1.5;
 }
 
+ul li {
+  font-size: 22px;
+}
+
 a {
   color: #4f6367;
 }
 
+code {
+  padding: .15em .2em .15em;
+}
 .box {
   /*background-color: #eef5db;*/
   background-color: #f4f4f2;
